@@ -1,5 +1,5 @@
-<!-- Navbar -->
-<nav class="main-header navbar navbar-expand-md navbar-light navbar-white fixed-navbar">
+Navbar -->
+<nav class="main-header navbar navbar-expand-md navbar-light navbar-white fixed-top">
   <div class="container">
      <!--  <a href="../../index3.html" class="navbar-brand">
         <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -14,18 +14,40 @@
     <div class="collapse navbar-collapse order-3" id="navbarCollapse">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
+        @if(Route::is('daftar'))
+        <!-- jika sedang berada di menu daftar -->
         <li class="nav-item">
-          <a href="#" class="nav-link">Home</a>
+          <a href="{{route('dashboardAll')}}" class="nav-link">Home</a>
+        </li>
+        @else
+        <li class="nav-item">
+          <a href="{{route('dashboardAll')}}" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
           <a href="#berita" class="nav-link">Berita</a>
         </li>
+        @if(!Auth::check())
+        <!-- jika belum login -->
         <li class="nav-item">
-          <a href="#" class="nav-link">Pendaftaran</a>
+          <a href="{{route('daftar')}}" class="nav-link">Pendaftaran</a>
         </li>
+        @else
+        <!-- jika sudah login -->
+        <li class="nav-item">
+          <a href="{{route('daftarAll')}}" class="nav-link">Pendaftaran</a>
+        </li>
+        @endif
         <li class="nav-item">
           <a href="#" class="nav-link">Konfirmasi</a>
         </li>
+        @endif
+        @if(Auth::check())
+        <li class="nav-item">
+          <a href="#" class="nav-link">Hi, {{Auth::user()->name}}</a>
+        </li>
+        @endif
+
+        
       </ul>
 
 
@@ -44,7 +66,16 @@
         </div>
       </div>
     </form>
+    @if(Auth::check())
+    <li class="nav-item">
+      <a href="{{route('logout')}}" onclick="confirm('Are you sure to Logout?')" class="nav-link">Logout</a>
+    </li>
+    @else
+    <li class="nav-item">
+      <a href="{{route('dashboard')}}" class="nav-link">Login</a>
+    </li>
+    @endif
   </ul>
 </div>
 </nav>
-  <!-- /.navbar -->
+  <!-- /.navbar

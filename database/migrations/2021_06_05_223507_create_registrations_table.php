@@ -15,6 +15,7 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
+            $table->string('registration_id')->default('RID-'.time());
             $table->string('nik')->uniqid();
             $table->string('nama');
             $table->string('alamat');

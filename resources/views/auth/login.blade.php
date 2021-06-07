@@ -27,24 +27,6 @@
         border-radius: 5px;
 
     }
-    .brand_logo_container {
-        position: absolute;
-        height: 200px;
-        width: 200px;
-        top: -110px;
-        border-radius: 50%;
-        background: #60a3bc;
-        /*padding: 10px;*/
-    }
-    .brand_logo {
-        height: 200px;
-        width: 200px;
-        /*border-radius: 10%;*/
-        /*border: 0px solid white;*/
-    }
-    .form_container {
-        margin-top: 20px;
-    }
     .login_btn {
         width: 100%;
         background: #60a3bc !important;
@@ -77,11 +59,6 @@
     <div class="d-flex justify-content-center h-100">
         <div class="user_card">
             <div class="d-flex justify-content-center">
-                <div class="brand_logo_container">
-                    <img src="{{url('data_file/lambang-psikologi.png')}}" class="brand_logo" alt="Logo">
-                </div>
-            </div>
-            <div class="d-flex justify-content-center form_container">
                 <form method="POST" action="{{ route('login') }}">
                  @csrf
                  @if($errors->any() or Session::get('errors'))
@@ -89,7 +66,7 @@
                     alert("{{$errors->first()}}");
                 </script>
                 @endif
-                <h5>Login</h5>
+                <h5 class="mb-3">Login Admin</h5>
                 <div class="input-group mb-3">
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-user"></i></span>
