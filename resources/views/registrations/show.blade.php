@@ -42,13 +42,13 @@
 						<div class="vl"></div>
 					</div>
 					<div class="col-7">
-
-						<table class="table">
-							<tr>
-								<td>Registration ID</td>
-								<td>:</td>
-								<td>{{$data->registration_id}}</td>
-							</tr>
+						<h4>Team {{$datas[1]->team_name}}</h4>
+						<br>
+						<h4>ID : {{$datas[1]->registration_id}}</h4>
+						<br>
+						@foreach($datas as $data)
+						<h5>Anggota {{$loop->index+1}}</h5>
+							<table class="table">
 							<tr>
 								<td>NIK</td>
 								<td>:</td>
@@ -110,6 +110,11 @@
 							</tr>
 
 						</table>
+
+						<hr>
+						@endforeach
+
+						
 					</div>
 				</div>		
 			</div>

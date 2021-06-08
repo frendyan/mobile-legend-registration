@@ -36,8 +36,16 @@ Route::get('/admin/login', [App\Http\Controllers\HomeController::class, 'login']
 
 
 Route::get('/pendaftaran', [App\Http\Controllers\RegistrationController::class, 'index'])->name('daftar');
-Route::get('/pendaftaran/all', [App\Http\Controllers\RegistrationController::class, 'indexAll'])->name('daftarAll');
+Route::get('/pendaftaran/all', [App\Http\Controllers\RegistrationAdminController::class, 'indexAll'])->name('daftarAll');
 Route::post('/pendaftaran/store', [App\Http\Controllers\RegistrationController::class, 'store'])->name('daftarSave');
 Route::get('/data', [App\Http\Controllers\RegistrationController::class, 'show'])->name('daftarDetail');
+
+
+Route::get('/konfirmasi', [App\Http\Controllers\RegistrationController::class, 'konfirmasi'])->name('viewKonfirmasi');
+Route::get('/konfirmasi/search', [App\Http\Controllers\RegistrationController::class, 'searchKonfirmasi'])->name('searchKonfirmasi');
+
+Route::resource('registrations', RegistrationAdminController::class); 
+//// ADMIN
+
 
 

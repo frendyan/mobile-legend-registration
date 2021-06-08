@@ -46,123 +46,271 @@
 						<form action="{{ route('daftarSave') }}" method="POST" enctype="multipart/form-data">
 							@csrf                
 							<div class="card-body">
-								<div class="form-group">
-									<label for="name">NIK</label>
-									<input type="text" class="form-control" placeholder="Masukkan NIK Anda" name ="nik" value="{{ old('nik') }}" required>
-									@error('nik')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="name">Nama</label>
-									<input type="text" class="form-control" placeholder="Masukkan Nama Anda" name="nama" value="{{ old('nama') }}" required>
-									@error('uname')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="name">Jenis Kelamin</label>
-									<select class="form-control" name="jk" required>
-										<option value="Laki-laki"> Laki-laki</option>
-										<option value="Perempuan"> Perempuan</option>
-									</select>
-									@error('jk')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="name">Tempat Lahir</label>
-									<input type="text" class="form-control" placeholder="Masukkan Tempat Lahir Anda" name ="tempat_lahir" value="{{ old('tempat_lahir') }}" required>
-									@error('tempat_lahir')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="name">Provinsi</label>
-									<select class="form-control" id="provinsicb" name="provinsi" required>
-										<option value="Provinsi A"> Provinsi A</option>
-										<option value="Provinsi B"> Provinsi B</option>
-									</select>
-									@error('kecamatan')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="name">Kecamatan</label>
-									<select class="form-control" id="kecamatancb" name="kecamatan" required>
-										<option value="Kecamatan A">Kecamatan A</option>
-										<option value="Kecamatan B">Kecamatan B</option>
-									</select>
-									@error('kecamatan')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="name">Kota</label>
-									<input type="text" class="form-control" placeholder="Masukkan Kota Asal Anda" name ="kota" value="{{ old('kota') }}" required>
-									@error('pos')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="name">Alamat</label>
-									<textarea class="form-control" placeholder="Masukkan Alamat Anda" name ="alamat" value="{{ old('alamat') }}" required></textarea>
-									@error('alamat')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="name">POS</label>
-									<input type="text" maxlength="5" class="form-control" placeholder="Masukkan Kode Pos Anda" name ="pos" value="{{ old('pos') }}" required>
-									@error('pos')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="name">Telepon</label>
-									<input type="text" maxlength="13" class="form-control" placeholder="Masukkan Nomor Telepon yang Bisa Dihubungi" name ="telp" value="{{ old('telp') }}" required>
-									@error('telp')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
-								</div>
-								<div class="form-group">
-									<label for="exampleInputFile">Foto Anda</label>
-									<div class="input-group">
-										<div class="custom-file">
-											<input type="file" class="custom-file-input" id="exampleInputFile" name="foto">
-											<label class="custom-file-label" for="exampleInputFile">Belum ada file dipilih</label>
-										</div>
+
+								@for($i=0;$i<6; $i++)
+								@if($i===0)
+								<div style="display: block;" id="div{{$i}}">
+									<div class="form-group">
+										<label for="name">Nama Tim</label>
+										<input type="text" class="form-control" placeholder="Masukkan Nama Team Anda" name ="team_name" value="{{ old('team_name') }}" required>
+										@error('team_name')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
 									</div>
-									@error('image')
-									<p class="text-danger">
-										{{ $message }}
-									</p>
-									@enderror
+									<button type="button" style="float: right;width: 100%;" class="btn btn-primary" onclick="nextSoal('{{$i}}');return false;">Selanjutnya</button>
+
 								</div>
-								
+								@elseif($i===5)
+								<div style="display: none;" id="div{{$i}}">
+									<h5>Masukkan Data Anggota {{$i}}</h5>
+									<div class="form-group">
+										<label for="name">NIK</label>
+										<input type="text" class="form-control" placeholder="Masukkan NIK Anda" name ="nik{{$i}}" value="{{ old('nik') }}" required>
+										@error('nik')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Nama</label>
+										<input type="text" class="form-control" placeholder="Masukkan Nama Anda" name="nama{{$i}}" value="{{ old('nama') }}" required>
+										@error('nama')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Jenis Kelamin</label>
+										<select class="form-control" name="jk{{$i}}" required>
+											<option value="Laki-laki"> Laki-laki</option>
+											<option value="Perempuan"> Perempuan</option>
+										</select>
+										@error('jk')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Tempat Lahir</label>
+										<input type="text" class="form-control" placeholder="Masukkan Tempat Lahir Anda" name ="tempat_lahir{{$i}}" value="{{ old('tempat_lahir') }}" required>
+										@error('tempat_lahir')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Provinsi</label>
+										<select class="form-control" id="provinsicb" name="provinsi{{$i}}" required>
+											<option value="Provinsi A"> Provinsi A</option>
+											<option value="Provinsi B"> Provinsi B</option>
+										</select>
+										@error('provinsi')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Kecamatan</label>
+										<select class="form-control" id="kecamatancb" name="kecamatan{{$i}}" required>
+											<option value="Kecamatan A">Kecamatan A</option>
+											<option value="Kecamatan B">Kecamatan B</option>
+										</select>
+										@error('kecamatan')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Kota</label>
+										<input type="text" class="form-control" placeholder="Masukkan Kota Asal Anda" name ="kota{{$i}}" value="{{ old('kota') }}" required>
+										@error('kota')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Alamat</label>
+										<textarea class="form-control" placeholder="Masukkan Alamat Anda" name ="alamat{{$i}}" value="{{ old('alamat') }}" required></textarea>
+										@error('alamat')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">POS</label>
+										<input type="text" maxlength="5" class="form-control" placeholder="Masukkan Kode Pos Anda" name ="pos{{$i}}" value="{{ old('pos') }}" required>
+										@error('pos')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Telepon</label>
+										<input type="text" maxlength="13" class="form-control" placeholder="Masukkan Nomor Telepon yang Bisa Dihubungi" name ="telp{{$i}}" value="{{ old('telp') }}" required>
+										@error('telp')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="exampleInputFile">Foto Anda</label>
+										<div class="input-group">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="exampleInputFile" name="foto{{$i}}">
+												<label class="custom-file-label" for="exampleInputFile">Belum ada file dipilih</label>
+											</div>
+										</div>
+										@error('foto')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<button type="button" style="float: left;" class="btn btn-primary" onclick="prevSoal('{{$i}}');return false;">Sebelumnya</button>
+
+									<button type="submit" class="btn btn-primary float-right">Submit</button>
+								</div>
+								@else
+
+								<div style="display: none" id="div{{$i}}">
+									<h5>Masukkan Data Anggota {{$i}}</h5>
+									
+									<div class="form-group">
+										<label for="name">NIK</label>
+										<input type="text" class="form-control" placeholder="Masukkan NIK Anda" name ="nik{{$i}}" value="{{ old('nik') }}" required>
+										@error('nik')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Nama</label>
+										<input type="text" class="form-control" placeholder="Masukkan Nama Anda" name="nama{{$i}}" value="{{ old('nama') }}" required>
+										@error('nama')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Jenis Kelamin</label>
+										<select class="form-control" name="jk{{$i}}" required>
+											<option value="Laki-laki"> Laki-laki</option>
+											<option value="Perempuan"> Perempuan</option>
+										</select>
+										@error('jk')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Tempat Lahir</label>
+										<input type="text" class="form-control" placeholder="Masukkan Tempat Lahir Anda" name ="tempat_lahir{{$i}}" value="{{ old('tempat_lahir') }}" required>
+										@error('tempat_lahir')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Provinsi</label>
+										<select class="form-control" id="provinsicb" name="provinsi{{$i}}" required>
+											<option value="Provinsi A"> Provinsi A</option>
+											<option value="Provinsi B"> Provinsi B</option>
+										</select>
+										@error('provinsi')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Kecamatan</label>
+										<select class="form-control" id="kecamatancb" name="kecamatan{{$i}}" required>
+											<option value="Kecamatan A">Kecamatan A</option>
+											<option value="Kecamatan B">Kecamatan B</option>
+										</select>
+										@error('kecamatan')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Kota</label>
+										<input type="text" class="form-control" placeholder="Masukkan Kota Asal Anda" name ="kota{{$i}}" value="{{ old('kota') }}" required>
+										@error('kota')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Alamat</label>
+										<textarea class="form-control" placeholder="Masukkan Alamat Anda" name ="alamat{{$i}}" value="{{ old('alamat') }}" required></textarea>
+										@error('alamat')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">POS</label>
+										<input type="text" maxlength="5" class="form-control" placeholder="Masukkan Kode Pos Anda" name ="pos{{$i}}" value="{{ old('pos') }}" required>
+										@error('pos')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="name">Telepon</label>
+										<input type="text" maxlength="13" class="form-control" placeholder="Masukkan Nomor Telepon yang Bisa Dihubungi" name ="telp{{$i}}" value="{{ old('telp') }}" required>
+										@error('telp')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<div class="form-group">
+										<label for="exampleInputFile">Foto Anda</label>
+										<div class="input-group">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="exampleInputFile" name="foto{{$i}}">
+												<label class="custom-file-label" for="exampleInputFile">Belum ada file dipilih</label>
+											</div>
+										</div>
+										@error('foto')
+										<p class="text-danger">
+											{{ $message }}
+										</p>
+										@enderror
+									</div>
+									<button type="button" style="float: left;" class="btn btn-primary" onclick="prevSoal('{{$i}}');return false;">Sebelumnya</button>
+
+									<button type="button" style="float: right;" class="btn btn-primary" onclick="nextSoal('{{$i}}');return false;">Selanjutnya</button>
+
+								</div>
+
+								@endif
+								@endfor
+
 							</div>
 							<!-- /.card-body -->
-							<button type="submit" class="btn btn-primary float-right">Submit</button>
 						</form>
 					</div>
 				</div>		
@@ -190,5 +338,40 @@
 	$(document).ready(function () {
 		bsCustomFileInput.init();
 	});
+
+	function nextSoal(index){
+		var x = document.getElementById('div'+index);
+
+		// var navSoal = document.getElementById('nav'+index);
+		// navSoal.classList.add('btn-success');
+		// navSoal.classList.remove('btn-secondary');
+
+		index++;
+		console.log("index y = "+index);
+		var y = document.getElementById("div"+index);
+		console.log("divx ke - ."+x+".");
+		console.log("divy ke - ."+y+".");
+		x.style.display = "none";
+		y.style.display = "block";
+
+	}
+
+	function prevSoal(index){
+		var x = document.getElementById('div'+index);
+
+		// var navSoal = document.getElementById('nav'+index);
+		// navSoal.classList.add('btn-success');
+		// navSoal.classList.remove('btn-secondary');
+
+		index--;
+		console.log("index y = "+index);
+		var y = document.getElementById("div"+index);
+		console.log("divx ke - ."+x+".");
+		console.log("divy ke - ."+y+".");
+		x.style.display = "none";
+		y.style.display = "block";
+
+	}
 </script>
+
 @endsection

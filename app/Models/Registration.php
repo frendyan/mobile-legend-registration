@@ -18,6 +18,7 @@ class Registration extends Model
      */
     protected $fillable = [
         'nik',
+        'team_name',
         'nama',
         'tempat_lahir',
         'alamat',

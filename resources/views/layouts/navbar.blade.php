@@ -14,18 +14,14 @@ Navbar -->
     <div class="collapse navbar-collapse order-3" id="navbarCollapse">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
-        @if(Route::is('daftar'))
-        <!-- jika sedang berada di menu daftar -->
         <li class="nav-item">
           <a href="{{route('dashboardAll')}}" class="nav-link">Home</a>
         </li>
-        @else
-        <li class="nav-item">
-          <a href="{{route('dashboardAll')}}" class="nav-link">Home</a>
-        </li>
+        @if(Route::is('dashboard') or Route::is('dashboardAll'))
         <li class="nav-item">
           <a href="#berita" class="nav-link">Berita</a>
         </li>
+        @endif
         @if(!Auth::check())
         <!-- jika belum login -->
         <li class="nav-item">
@@ -34,13 +30,12 @@ Navbar -->
         @else
         <!-- jika sudah login -->
         <li class="nav-item">
-          <a href="{{route('daftarAll')}}" class="nav-link">Pendaftaran</a>
+          <a href="{{route('daftarAll')}}" class="nav-link">Data Pendaftar</a>
         </li>
         @endif
         <li class="nav-item">
-          <a href="#" class="nav-link">Konfirmasi</a>
+          <a href="{{route('viewKonfirmasi')}}" class="nav-link">Konfirmasi</a>
         </li>
-        @endif
         @if(Auth::check())
         <li class="nav-item">
           <a href="#" class="nav-link">Hi, {{Auth::user()->name}}</a>
