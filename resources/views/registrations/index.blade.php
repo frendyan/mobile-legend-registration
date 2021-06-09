@@ -52,7 +52,7 @@
 								<div style="display: block;" id="div{{$i}}">
 									<div class="form-group">
 										<label for="name">Nama Tim</label>
-										<input type="text" class="form-control" placeholder="Masukkan Nama Team Anda" name ="team_name" value="{{ old('team_name') }}" required>
+										<input type="text" class="form-control" placeholder="Masukkan Nama Team Anda" name ="team_name" value="abcde" required>
 										@error('team_name')
 										<p class="text-danger">
 											{{ $message }}
@@ -67,7 +67,7 @@
 									<h5>Masukkan Data Anggota {{$i}}</h5>
 									<div class="form-group">
 										<label for="name">NIK</label>
-										<input type="text" class="form-control" placeholder="Masukkan NIK Anda" name ="nik{{$i}}" value="{{ old('nik') }}" required>
+										<input type="text" class="form-control" placeholder="Masukkan NIK Anda" name ="nik{{$i}}" value="abcde" required>
 										@error('nik')
 										<p class="text-danger">
 											{{ $message }}
@@ -76,7 +76,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Nama</label>
-										<input type="text" class="form-control" placeholder="Masukkan Nama Anda" name="nama{{$i}}" value="{{ old('nama') }}" required>
+										<input type="text" class="form-control" placeholder="Masukkan Nama Anda" name="nama{{$i}}" value="abcde" required>
 										@error('nama')
 										<p class="text-danger">
 											{{ $message }}
@@ -97,7 +97,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Tempat Lahir</label>
-										<input type="text" class="form-control" placeholder="Masukkan Tempat Lahir Anda" name ="tempat_lahir{{$i}}" value="{{ old('tempat_lahir') }}" required>
+										<input type="text" class="form-control" placeholder="Masukkan Tempat Lahir Anda" name ="tempat_lahir{{$i}}" value="abcde" required>
 										@error('tempat_lahir')
 										<p class="text-danger">
 											{{ $message }}
@@ -130,7 +130,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Kota</label>
-										<input type="text" class="form-control" placeholder="Masukkan Kota Asal Anda" name ="kota{{$i}}" value="{{ old('kota') }}" required>
+										<input type="text" class="form-control" placeholder="Masukkan Kota Asal Anda" name ="kota{{$i}}" value="abcde" required>
 										@error('kota')
 										<p class="text-danger">
 											{{ $message }}
@@ -139,7 +139,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Alamat</label>
-										<textarea class="form-control" placeholder="Masukkan Alamat Anda" name ="alamat{{$i}}" value="{{ old('alamat') }}" required></textarea>
+										<textarea class="form-control" placeholder="Masukkan Alamat Anda" name ="alamat{{$i}}" value="abcde" required></textarea>
 										@error('alamat')
 										<p class="text-danger">
 											{{ $message }}
@@ -148,7 +148,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">POS</label>
-										<input type="text" maxlength="5" class="form-control" placeholder="Masukkan Kode Pos Anda" name ="pos{{$i}}" value="{{ old('pos') }}" required>
+										<input type="text" maxlength="5" class="form-control" placeholder="Masukkan Kode Pos Anda" name ="pos{{$i}}" value="abcde" required>
 										@error('pos')
 										<p class="text-danger">
 											{{ $message }}
@@ -157,7 +157,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Telepon</label>
-										<input type="text" maxlength="13" class="form-control" placeholder="Masukkan Nomor Telepon yang Bisa Dihubungi" name ="telp{{$i}}" value="{{ old('telp') }}" required>
+										<input type="text" maxlength="13" class="form-control" placeholder="Masukkan Nomor Telepon yang Bisa Dihubungi" name ="telp{{$i}}" value="abcde" required>
 										@error('telp')
 										<p class="text-danger">
 											{{ $message }}
@@ -189,7 +189,7 @@
 									
 									<div class="form-group">
 										<label for="name">NIK</label>
-										<input type="text" class="form-control" placeholder="Masukkan NIK Anda" name ="nik{{$i}}" value="{{ old('nik') }}" required>
+										<input type="text" class="form-control" placeholder="Masukkan NIK Anda" name ="nik{{$i}}" value="abcde" required>
 										@error('nik')
 										<p class="text-danger">
 											{{ $message }}
@@ -198,7 +198,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Nama</label>
-										<input type="text" class="form-control" placeholder="Masukkan Nama Anda" name="nama{{$i}}" value="{{ old('nama') }}" required>
+										<input type="text" class="form-control" placeholder="Masukkan Nama Anda" name="nama{{$i}}" value="abcde" required>
 										@error('nama')
 										<p class="text-danger">
 											{{ $message }}
@@ -219,7 +219,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Tempat Lahir</label>
-										<input type="text" class="form-control" placeholder="Masukkan Tempat Lahir Anda" name ="tempat_lahir{{$i}}" value="{{ old('tempat_lahir') }}" required>
+										<input type="text" class="form-control" placeholder="Masukkan Tempat Lahir Anda" name ="tempat_lahir{{$i}}" value="abcde" required>
 										@error('tempat_lahir')
 										<p class="text-danger">
 											{{ $message }}
@@ -252,7 +252,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Kota</label>
-										<input type="text" class="form-control" placeholder="Masukkan Kota Asal Anda" name ="kota{{$i}}" value="{{ old('kota') }}" required>
+										<input type="text" class="form-control" placeholder="Masukkan Kota Asal Anda" name ="kota{{$i}}" value="abcde" required>
 										@error('kota')
 										<p class="text-danger">
 											{{ $message }}
@@ -261,7 +261,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Alamat</label>
-										<textarea class="form-control" placeholder="Masukkan Alamat Anda" name ="alamat{{$i}}" value="{{ old('alamat') }}" required></textarea>
+										<textarea class="form-control" placeholder="Masukkan Alamat Anda" name ="alamat{{$i}}" value="abcde" required></textarea>
 										@error('alamat')
 										<p class="text-danger">
 											{{ $message }}
@@ -270,7 +270,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">POS</label>
-										<input type="text" maxlength="5" class="form-control" placeholder="Masukkan Kode Pos Anda" name ="pos{{$i}}" value="{{ old('pos') }}" required>
+										<input type="text" maxlength="5" class="form-control" placeholder="Masukkan Kode Pos Anda" name ="pos{{$i}}" value="abcde" required>
 										@error('pos')
 										<p class="text-danger">
 											{{ $message }}
@@ -279,7 +279,7 @@
 									</div>
 									<div class="form-group">
 										<label for="name">Telepon</label>
-										<input type="text" maxlength="13" class="form-control" placeholder="Masukkan Nomor Telepon yang Bisa Dihubungi" name ="telp{{$i}}" value="{{ old('telp') }}" required>
+										<input type="text" maxlength="13" class="form-control" placeholder="Masukkan Nomor Telepon yang Bisa Dihubungi" name ="telp{{$i}}" value="abcde" required>
 										@error('telp')
 										<p class="text-danger">
 											{{ $message }}
@@ -338,6 +338,8 @@
 	$(document).ready(function () {
 		bsCustomFileInput.init();
 	});
+</script>
+<script type="text/javascript">
 
 	function nextSoal(index){
 		var x = document.getElementById('div'+index);

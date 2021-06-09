@@ -65,7 +65,7 @@ class RegistrationController extends Controller
             $r = new Registration();
             $r->registration_id = $rid;
             $r->nik = $request->get('nik'.$i);
-            $r->team_name = $request->get('team_name'.$i);
+            $r->team_name = $request->get('team_name');
             $r->nama = $request->get('nama'.$i);
             $r->tempat_lahir = $request->get('tempat_lahir'.$i);
             $r->provinsi = $request->get('provinsi'.$i);
@@ -92,9 +92,9 @@ class RegistrationController extends Controller
 
         // $id = Registration::create(array_merge($request->all(), ['foto'=>$request->file('foto')->getClientOriginalName()]))->id;
 
-        $datas = Registration::where('team_name', $team_name)->get();
-
-        return view('registrations.show', compact('datas'))
+        $datas = Registration::where('team_name',$request->get('team_name'))->get();
+        $team_name = $request->get('team_name');
+        return redirect()->route('daftarDetail', $team_name)
         ->with('success', 'Pendaftaran Berhasil');
     }
 
@@ -104,10 +104,9 @@ class RegistrationController extends Controller
      * @param  \App\Models\Registration  $registration
      * @return \Illuminate\Http\Response
      */
-    public function show(Registration $registration)
+    public function show($team_name)
     {
-        $datas = Registration::where('registration_id', 'RID-1623127033')->get();
-
+        dd($team_name);
         return view('registrations.show', compact('datas'));
     }
 

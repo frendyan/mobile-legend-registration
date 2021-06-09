@@ -35,7 +35,7 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="row justify-content-around">
-					<div class="col-4 text-center" style="margin-top: auto;margin-bottom: auto;">
+					<div class="col-4 text-center" style="margin-bottom: auto;">
 						<h4>Pendaftaran Sukses !!!</h4>
 					</div>
 					<div class="col-1">

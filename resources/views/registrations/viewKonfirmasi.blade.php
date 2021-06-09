@@ -33,7 +33,6 @@
 	<div class="content w-100">
 		<div class="card">
 			<div class="card-body">
-				{{dd(Session::get('success'))}}
 				@if ($message = Session::get('success'))
 				<div class="alert alert-success alert-dismissible fade show" role="alert">
 					{{$message}}
