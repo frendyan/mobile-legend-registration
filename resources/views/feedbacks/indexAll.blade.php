@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-<title>Pendaftaran</title>
+<title>Kotak Saran</title>
 @endsection
 
 @section('style')
@@ -43,50 +43,24 @@
 					<thead>
 						<tr align="center">
 							<th>No</th>
-							<th>Reg ID</th>
-							<th>Nama Team</th>
-							<th>Status</th>
-							<th>Catatan</th>
-							<th>Action</th>
+							<th>Nama</th>
+							<th>Alamat</th>
+							<th>Email</th>
+							<th>Saran atau Keluhan</th>
 						</tr>
 					</thead>
 					<tbody>
-						@if(empty($datas[0]))
-						<tr>
-							<td colspan="10" align="center">{{"(Belum ada data)"}}</td>
-						</tr>
-						@else      
 						@foreach($datas as $data)                     
 						<tr align="center">
-							<td width="5%">{{$loop->index+1}}</td>
-							<td width="10%">{{$data->registration_id}}</td>
-							<td width="10%">{{$data->team_name}}</td>
-							<td >
-								@if($data->status==='0')
-								<span class="badge badge-warning text-dark" style="font-size: 14px;">Menunggu Validasi</span>
-								@elseif($data->status==='1')
-								<span class="badge badge-success text-white" style="font-size: 14px;">Diterima</span>
-								@elseif($data->status==='2')
-								<span class="badge badge-danger text-white" style="font-size: 14px;">Ditolak</span>
-								@endif
-							</td>
+							<td>{{$loop->index+1}}</td>
+							<td>{{$data->nama}}</td>
+							<td>{{$data->alamat}}</td>
+							<td >{{$data->email}}</td>
 							<td>
-								{{$data->jadwal_tanding}}
+								{{$data->komentar}}
 							</td>
-							<td>
-								@php
-								$id = DB::select("select id from registrations where registration_id = '".$data->registration_id."' limit 1");
-								@endphp
-								<form action="{{ route('registrations.destroy',$id[0]->id) }}" method="POST">                                                            
-									<a href="{{route('registrations.show', $id[0]->id)}}" class="btn btn-primary"><i class="nav-icon fas fa-eye"></i></a>
-									@csrf
-									@method('DELETE')                                            
-									<button onclick="return confirm('Hapus Berkas ini?')" type="submit" class="btn btn-danger"><i class="nav-icon fas fa-trash"></i></button>
-								</form>
-							</td>           
 						</tr>
 						@endforeach
-						@endif
 					</tbody>                
 				</table>
 			</div>

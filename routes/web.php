@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\RegistrationAdminController;
+use App\Http\Controllers\FeedbacksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,13 +39,23 @@ Route::get('/admin/login', [App\Http\Controllers\HomeController::class, 'login']
 Route::get('/pendaftaran', [App\Http\Controllers\RegistrationController::class, 'index'])->name('daftar');
 Route::get('/pendaftaran/all', [App\Http\Controllers\RegistrationAdminController::class, 'indexAll'])->name('daftarAll');
 Route::post('/pendaftaran/store', [App\Http\Controllers\RegistrationController::class, 'store'])->name('daftarSave');
-Route::get('/data', [App\Http\Controllers\RegistrationController::class, 'show'])->name('daftarDetail');
+Route::post('/pendaftaran/acc', [App\Http\Controllers\RegistrationAdminController::class, 'acc'])->name('daftarAcc');
+Route::post('/pendaftaran/reject/{regid}', [App\Http\Controllers\RegistrationAdminController::class, 'reject'])->name('daftarReject');
+Route::get('/data', [App\Http\Controllers\RegistrationController::class, 'showData'])->name('daftarDetail');
+Route::get('/print/card/{regid}', [App\Http\Controllers\RegistrationController::class, 'showCard'])->name('printCard');
 
 
 Route::get('/konfirmasi', [App\Http\Controllers\RegistrationController::class, 'konfirmasi'])->name('viewKonfirmasi');
 Route::get('/konfirmasi/search', [App\Http\Controllers\RegistrationController::class, 'searchKonfirmasi'])->name('searchKonfirmasi');
 
+
+Route::get('/saran', [App\Http\Controllers\FeedbacksController::class, 'index'])->name('viewSaran');
+Route::post('/saran/save', [App\Http\Controllers\FeedbacksController::class, 'store'])->name('saranSave');
+Route::get('/saran/all', [App\Http\Controllers\FeedbacksController::class, 'indexAll'])->name('viewSaranAll');
+
+
 Route::resource('registrations', RegistrationAdminController::class); 
+Route::resource('feedbacks', FeedbacksController::class); 
 //// ADMIN
 
 

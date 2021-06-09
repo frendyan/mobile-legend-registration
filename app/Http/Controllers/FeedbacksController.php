@@ -14,7 +14,13 @@ class FeedbacksController extends Controller
      */
     public function index()
     {
-        //
+        return view('feedbacks.index');
+    }
+
+    public function indexAll()
+    {
+        $datas = Feedbacks::all();
+        return view('feedbacks.indexAll', compact('datas'));
     }
 
     /**
@@ -35,7 +41,8 @@ class FeedbacksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Feedbacks::create($request->all());
+        return redirect()->route('viewSaran')->with('success', 'Saran atau Keluhan anda berhasil dibuat. terimakasih');
     }
 
     /**

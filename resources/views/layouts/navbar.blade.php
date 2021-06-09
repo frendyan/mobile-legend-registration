@@ -27,22 +27,25 @@ Navbar -->
         <li class="nav-item">
           <a href="{{route('daftar')}}" class="nav-link">Pendaftaran</a>
         </li>
+         <li class="nav-item">
+          <a href="{{route('viewKonfirmasi')}}" class="nav-link">Konfirmasi</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('viewSaran')}}" class="nav-link">Saran</a>
+        </li>
         @else
         <!-- jika sudah login -->
         <li class="nav-item">
           <a href="{{route('daftarAll')}}" class="nav-link">Data Pendaftar</a>
         </li>
-        @endif
         <li class="nav-item">
-          <a href="{{route('viewKonfirmasi')}}" class="nav-link">Konfirmasi</a>
+          <a href="{{route('viewSaranAll')}}" class="nav-link">Kotak Saran</a>
         </li>
-        @if(Auth::check())
-        <li class="nav-item">
+         <li class="nav-item">
           <a href="#" class="nav-link">Hi, {{Auth::user()->name}}</a>
         </li>
         @endif
-
-        
+       
       </ul>
 
 

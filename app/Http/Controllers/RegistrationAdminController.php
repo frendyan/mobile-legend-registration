@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Registration;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class RegistrationAdminController extends Controller
@@ -23,7 +24,7 @@ class RegistrationAdminController extends Controller
 
     public function indexAll()
     {
-        $datas = Registration::all();
+        $datas = DB::select("select registration_id, team_name, status, jadwal_tanding from registrations group by jadwal_tanding, registration_id, team_name, status");
         return view('registrations.indexAll', compact('datas'));
     }
 
@@ -84,7 +85,9 @@ class RegistrationAdminController extends Controller
      */
     public function show(Registration $registration)
     {
-        return view('registrations.show');
+
+        $datas = Registration::where('registration_id', $registration->registration_id)->get();
+        return view('registrations.showAdmin', compact('datas'));
     }
 
     /**
@@ -119,5 +122,17 @@ class RegistrationAdminController extends Controller
     public function destroy(Registration $registration)
     {
         //
+    }
+
+    public function acc(Request $request)
+    {
+        Registration::where('registration_id', $request->get('regid'))->update(['status' => 1, 'jadwal_tanding' => $request->get('jadwal_tanding')]);
+        return redirect()->route('daftarAll')->with('success', 'Berhasil ditandai sebagai Diterima');
+    }
+
+    public function reject(Request $request)
+    {
+        Registration::where('registration_id', $request->get('regid'))->update(['status' => 2, 'jadwal_tanding' => $request->get('jadwal_tanding')]);
+        return redirect()->route('daftarAll')->with('success', 'Berhasil ditandai sebagai Ditolak');
     }
 }

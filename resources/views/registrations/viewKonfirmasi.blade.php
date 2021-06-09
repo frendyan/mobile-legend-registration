@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-<title>Pendaftaran</title>
+<title>Konfirmasi</title>
 @endsection
 
 @section('style')
@@ -33,9 +33,9 @@
 	<div class="content w-100">
 		<div class="card">
 			<div class="card-body">
-				@if ($message = Session::get('success'))
-				<div class="alert alert-success alert-dismissible fade show" role="alert">
-					{{$message}}
+				@if(!empty($success))
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+					{{$success}}
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -69,6 +69,7 @@
 									<th>Reg ID</th>
 									<th>Nama Team</th>
 									<th>Status</th>
+									<th>Catatan</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -88,6 +89,12 @@
 										@endif
 									</td>
 									<td>
+										{{$data->jadwal_tanding}}
+									</td>
+									<td>
+										@if($data->status==='1')
+										<a href="{{route('printCard', $data->registration_id)}}" target="__blank">Print Kartu Team</a>
+										@endif
 									</td>           
 								</tr>
 								@endforeach

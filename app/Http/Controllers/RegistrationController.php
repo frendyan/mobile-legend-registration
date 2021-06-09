@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Registration;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class RegistrationController extends Controller
 {
@@ -94,9 +96,10 @@ class RegistrationController extends Controller
 
         $datas = Registration::where('team_name',$request->get('team_name'))->get();
         $team_name = $request->get('team_name');
-        return redirect()->route('daftarDetail', $team_name)
-        ->with('success', 'Pendaftaran Berhasil');
+        return redirect()->route('daftarDetail', ['team_name' => $team_name])->with('message', 'Pendaftaran Berhasil!!!');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -108,6 +111,19 @@ class RegistrationController extends Controller
     {
         dd($team_name);
         return view('registrations.show', compact('datas'));
+    }
+
+    public function showData(Request $request)
+    {
+        // dd($request);
+        $datas = Registration::where('team_name', $request->get('team_name'))->get();
+        return view('registrations.show', compact('datas'));
+    }
+    public function showCard($regid)
+    {
+        // dd($request);
+        $datas = Registration::where('registration_id', $regid)->get();
+        return view('card.card', compact('datas'));
     }
 
     /**
@@ -155,7 +171,8 @@ class RegistrationController extends Controller
 
         // dd($request);
 
-        $datas = Registration::where('registration_id', $request->rid)->get();
+        $datas = DB::select("select registration_id, team_name, status, jadwal_tanding from registrations where registration_id = '".$request->rid."' group by jadwal_tanding, registration_id, team_name, status");
+
         $datasCount = Registration::where('registration_id', $request->rid)->count();
 
         if($datasCount < 1){
@@ -164,8 +181,8 @@ class RegistrationController extends Controller
             return view('registrations.viewKonfirmasi', compact('datas'));
         }
 
-        // dd($data);
+// dd($data);
 
-        
+
     }
 }
