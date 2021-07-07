@@ -53,6 +53,14 @@ Route::get('/saran', [App\Http\Controllers\FeedbacksController::class, 'index'])
 Route::post('/saran/save', [App\Http\Controllers\FeedbacksController::class, 'store'])->name('saranSave');
 Route::get('/saran/all', [App\Http\Controllers\FeedbacksController::class, 'indexAll'])->name('viewSaranAll');
 
+Route::get('news/view/1', function() {return view('news.beritaSatu');})->name('beritaSatu');
+Route::get('news/view/2', function() {return view('news.beritaDua');})->name('beritaDua');
+Route::get('news/view/3', function() {return view('news.beritaTiga');})->name('beritaTiga');
+Route::get('news/view/4', function() {return view('news.beritaEmpat');})->name('beritaEmpat');
+Route::get('news/view/5', function() {return view('news.beritaLima');})->name('beritaLima');
+Route::get('news/view/6', function() {return view('news.beritaEnam');})->name('beritaEnam');
+Route::get('news/view/7', function() {return view('news.beritaTujuh');})->name('beritaTujuh');
+
 
 Route::resource('registrations', RegistrationAdminController::class); 
 Route::resource('feedbacks', FeedbacksController::class); 

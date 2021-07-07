@@ -20,7 +20,7 @@
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img class="d-block w-100" height="250px" src="{{url('data_file/1.svg')}}" alt="First slide">
+					<img class="d-block w-100" height="500px" src="{{url('data_file/slide1.jpg')}}" alt="First slide">
 				</div>
 				
 			</div>

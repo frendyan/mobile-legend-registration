@@ -28,7 +28,7 @@ class CreateRegistrationsTable extends Migration
             $table->string('telp');
             $table->string('tempat_lahir');
             $table->string('jk');
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->string('status');
             $table->timestamps();
         });
